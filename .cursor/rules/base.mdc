@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+I am working on this project for myself as practice with interesting tools to maintain and improve hard skills. The goal is to get familiar with the current state of MLOps toolsets.
+
+Project structure:
+./services - components, containerized. I use them for deployment. Each has a Dockerfile and docker-compose file.
+./docs - documentation

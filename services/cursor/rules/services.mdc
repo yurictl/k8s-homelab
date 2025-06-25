@@ -1,0 +1,8 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Here I develop microservices that I deploy locally or in k8s.
+I use different frameworks and languages, so check the service directory.
+Don't add functionality on your own that I didn't ask for. Suggest improvements.

@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Documentation Rules
+
+## Purpose
+Document progress and interesting experiments I'm working on. Keep it concise and focused.
+
+## Structure
+- `./progress/` - Progress tracking
+  - `sprints.md` - General sprint history and overview
+  - `sprint-NNN.md` - Detailed sprint documentation with daily progress
+- `./guides/` - Technology guides and notes
+  - Organized by technology (docker, kubernetes, mlops-tools)
+  - Keep guides practical and focused on learnings
+
+## Guidelines
+- Only create sections that I explicitly add
+- Be concise and to the point
+- Focus on practical learnings and experiments
+- Document both successes and challenges
+- Keep guides updated with current project experience

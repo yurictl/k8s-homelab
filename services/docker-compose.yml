@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: client-dual:latest
+    build:
+      context: ./client-dual
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - VITE_PYTHON_SERVICE_URL=http://python-service:8080
+      - VITE_NODE_SERVICE_URL=http://node-service:5000
+      - VITE_API_TIMEOUT=10000
+      - VITE_DEV_MODE=false
+    depends_on:
+      - python-service
+      - node-service
+    networks:
+      - homelab
+
+  # Python backend service (for testing)
+  python-service:
+    image: server-python:latest
+    build:
+      context: ./server-python
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+    networks:
+      - homelab
+
+  # Node.js backend service (for testing)
+  node-service:
+    image: server-node:latest
+    build:
+      context: ./server-node
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    networks:
+      - homelab
+
+networks:
+  homelab:
+    driver: bridge 
