@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 Here I develop microservices that I deploy locally or in k8s.
 I use different frameworks and languages, so check the service directory.

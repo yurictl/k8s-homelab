@@ -14,8 +14,6 @@ router.get('/hello', (req: Request, res: Response) => {
   res.setHeader("AK-Token", "This is a header");
   res.json({ 
     message: 'Hello from the backend!',
-    accessToken: req.header("x-amzn-oidc-accesstoken"),
-    idToken: req.header("x-amzn-oidc-data"),
     timestamp: new Date().toISOString()
   });
 });

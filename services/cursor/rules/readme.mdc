@@ -1,0 +1,19 @@
+---
+description: 
+globs: services/*/README.md
+alwaysApply: false
+---
+# README.md Writing Rules
+
+Write README.md files for sercvives concisely with these mandatory sections:
+
+## Required Sections
+- **Name with short description** - Clear project title and brief overview
+- **Environment Variables** - Table of all required environment variables with descriptions and defauls values.
+- **Quick Start with Docker** - Simple docker-compose or docker run commands
+
+## Guidelines
+- Keep it concise and focused
+- Add additional sections only if truly necessary
+- Use clear, descriptive language
+- Include practical examples where helpful

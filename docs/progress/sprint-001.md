@@ -27,6 +27,12 @@
 - Created frontend that checks endpoints for service_node and service_python
 - Launched all three services with unified docker compose
 
+### 2025-06-27
+
+- Explored container internals [Docker internals](../guides/docker/2026-06-26 Docker internals.md)
+- Removed unnecessary functionality from services
+- Simplified README.md structure for services and added rules
+
 ## Notes
 
 - Both Python and Node.js backends successfully containerized

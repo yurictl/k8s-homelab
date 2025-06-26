@@ -110,7 +110,6 @@ def get_environment_variables():
     """Get environment variables (filtered for security)"""
     # Filter out sensitive environment variables
     sensitive_keys = {
-        'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'AWS_SESSION_TOKEN',
         'PASSWORD', 'SECRET', 'KEY', 'TOKEN', 'CREDENTIALS'
     }
     

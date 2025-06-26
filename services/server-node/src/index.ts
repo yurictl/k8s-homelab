@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import morgan from 'morgan';
 import cors from 'cors';
 import routes from './routes';
-import { authMiddleware } from './middleware/auth';
 
 // Load environment variables
 dotenv.config();
@@ -22,9 +21,6 @@ app.use(cors({
   origin: '*', // Configure appropriately for production
   credentials: true
 }));
-
-// Apply authentication middleware globally
-app.use(authMiddleware);
 
 // Mount routes
 app.use('/', routes);
