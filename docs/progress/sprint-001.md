@@ -29,14 +29,14 @@
 
 ### 2025-06-27
 
-- Explored container internals [Docker internals](../guides/docker/2026-06-26 Docker internals.md)
+- Explored container internals [Docker internals](../guides/docker/2026-06-26%20Docker%20internals.md)
 - Removed unnecessary functionality from services
 - Simplified README.md structure for services and added rules
 
 ### 2025-06-27
 
 - Wrote manifests for services and attempted to run them in Rancher Desktop
-- Discovered specific features that need to be studied in more detail [Rancher Desktop](docs/guides/kubernetes/Rancher Desktop.md)
+- Discovered specific features that need to be studied in more detail [Rancher Desktop](docs/guides/kubernetes/Rancher%20Desktop.md)
 
 ## Notes
 
