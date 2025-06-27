@@ -1,10 +1,6 @@
 # Sprint 001: Docker & Containerization Basics
 
-## Overview
-
-- **Duration**: 2025-06-24 to 2025-06-26
-- **Focus**: Docker fundamentals, multi-service setup
-- **Goals**:
+## Goals
   - [x] Understand Docker basics
   - [x] Set up Python and Node.js backends
   - [X] Create frontend application
@@ -12,6 +8,8 @@
   - [X] Test local deployment
   - [X] Understand Cursor files structure for the project
   - [ ] Write manifests for k8s deploy and try with Rancher Desktop
+  - [ ] Add monitoring and observability
+  - [ ] Create complex infrastructure, for example, add network policies
 
 ## Daily Progress
 
@@ -27,7 +25,7 @@
 - Created frontend that checks endpoints for service_node and service_python
 - Launched all three services with unified docker compose
 
-### 2025-06-27
+### 2025-06-26
 
 - Explored container internals [Docker internals](../guides/docker/2026-06-26%20Docker%20internals.md)
 - Removed unnecessary functionality from services
@@ -38,8 +36,7 @@
 - Wrote manifests for services and attempted to run them in Rancher Desktop
 - Discovered specific features that need to be studied in more detail [Rancher Desktop](../guides/kubernetes/Rancher%20Desktop.md)
 
-## Notes
+#### Ideas
 
-- Both Python and Node.js backends successfully containerized
-- Docker Compose files created for individual services
-- Need to create unified orchestration for all services
+- Create maximally complex services and infrastructure. Then add monitoring and observability. This will make it interesting to migrate everything to a new platform. By "interesting" I mean that many things will break and we'll need to figure out and fix them.
+

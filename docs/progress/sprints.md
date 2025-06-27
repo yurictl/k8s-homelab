@@ -4,7 +4,7 @@
 
 ### Summary
 
-- to be written later
+- Working on local deployment. Several interconnected services. The goal is to create a complex enough setup that will break when migrating to other tools.
 
 ---
 
