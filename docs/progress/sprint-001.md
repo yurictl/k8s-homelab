@@ -33,6 +33,11 @@
 - Removed unnecessary functionality from services
 - Simplified README.md structure for services and added rules
 
+### 2025-06-27
+
+- Wrote manifests for services and attempted to run them in Rancher Desktop
+- Discovered specific features that need to be studied in more detail [Rancher Desktop](docs/guides/kubernetes/Rancher Desktop.md)
+
 ## Notes
 
 - Both Python and Node.js backends successfully containerized

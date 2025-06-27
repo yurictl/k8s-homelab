@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: homelab-ingress
+  namespace: homelab
+  annotations:
+    # Traefik specific annotations
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.tls: "false"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: homelab.local  # Change this to your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 3000
+      - path: /api/python
+        pathType: Prefix
+        backend:
+          service:
+            name: python-service
+            port:
+              number: 8080
+      - path: /api/node
+        pathType: Prefix
+        backend:
+          service:
+            name: node-service
+            port:
+              number: 5000 
