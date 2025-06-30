@@ -1,19 +1,25 @@
 # Rancher Desktop Notes
 
-If using Rancher Desktop for a local Kubernetes cluster:
+## Rancher Desktop and Docker
 
-- Docker and Kubernetes use different runtimes (Docker vs containerd).
+For using Rancher Desktop for a local Kubernetes cluster:
 
-- After building images with Docker, you must import them into containerd for Kubernetes to see them:
+- The docker CLI looks at your system Docker (/var/run/docker.sock), not the one that Rancher creates.
 
-  ```bash
-  docker save <image>:<tag> | sudo ctr -n k8s.io images import -
-  ```
+### Not very correct options
 
-- In Kubernetes manifests, set:
+- One option is that after building images with Docker, you must import them into containerd for Kubernetes to see them. I don't like this because it creates "extra" steps.
+- You can run a local registry and push images there. But again, a local registry looks like an extra entity.
 
-  ```yaml
-  imagePullPolicy: Never
-  ```
+### Better options
 
-- This ensures your local images are used by the cluster.
+Use nerdctl
+
+- Switch Rancher Desktop to use containerd.
+
+- Use [nerdctl](https://github.com/containerd/nerdctl), which comes with Rancher Desktop, to build images.
+
+```bash
+nerdctl -n k8s.io -t server-python:latest  services/server-python
+nerdctl build -n k8s.io -t server-node:latest ./services/server-node
+nerdctl build -n k8s.io -t homelab-frontend:latest ./services/homelab-frontend

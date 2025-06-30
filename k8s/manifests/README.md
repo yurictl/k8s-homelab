@@ -8,7 +8,7 @@ This directory contains Kubernetes manifests for deploying the homelab services.
 - `configmap.yaml` - Configuration for environment variables
 - `server-python-deployment.yaml` - Python backend service deployment and service
 - `server-node-deployment.yaml` - Node.js backend service deployment and service  
-- `client-dual-deployment.yaml` - Frontend application deployment and service
+- `homelab-frontend-deployment.yaml` - Frontend application deployment and service
 - `ingress.yaml` - Ingress configuration for external access
 - `kustomization.yaml` - Kustomize configuration for managing all resources
 
@@ -22,7 +22,7 @@ This directory contains Kubernetes manifests for deploying the homelab services.
    ```bash
    docker build -t server-python:latest ./services/server-python
    docker build -t server-node:latest ./services/server-node
-   docker build -t client-dual:latest ./services/client-dual
+   docker build -t homelab-frontend:latest ./services/homelab-frontend
    ```
 
 ## Deployment

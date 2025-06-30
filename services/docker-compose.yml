@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   frontend:
-    image: client-dual:latest
+    image: homelab-frontend:latest
     build:
-      context: ./client-dual
+      context: ./homelab-frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"

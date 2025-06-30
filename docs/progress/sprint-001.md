@@ -36,6 +36,11 @@
 - Wrote manifests for services and attempted to run them in Rancher Desktop
 - Discovered specific features that need to be studied in more detail [Rancher Desktop](../guides/kubernetes/Rancher%20Desktop.md)
 
+### 2025-06-30
+
+- Analysis of how Rancher Desktop works on WSL2.
+- The topic of Docker context and registry turns out to be more interesting than it seems. Need to study deeper
+
 #### Ideas
 
 - Create maximally complex services and infrastructure. Then add monitoring and observability. This will make it interesting to migrate everything to a new platform. By "interesting" I mean that many things will break and we'll need to figure out and fix them.

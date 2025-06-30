@@ -13,6 +13,8 @@ FastAPI microservice for experiments and monitoring. Built to practice container
 
 ```bash
 # Docker
+docker build -t server-python .
+
 docker run -d -p 8080:8080 --name server-python server-python
 
 # Local development

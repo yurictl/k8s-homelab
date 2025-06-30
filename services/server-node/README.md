@@ -16,7 +16,9 @@ This service serves as a foundation for learning:
 npm install && npm run dev
 
 # Docker
-docker-compose up --build
+docker build -t server-node .
+
+docker run -d -p 5000:5000 --name server-node server-node
 ```
 
 ## Key Features
