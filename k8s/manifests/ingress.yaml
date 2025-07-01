@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: homelab.local  # Change this to your domain
+  - host: homelab.127.0.0.1.sslip.io
     http:
       paths:
       - path: /
@@ -20,17 +20,17 @@ spec:
             name: frontend-service
             port:
               number: 3000
-      - path: /api/python
+      - path: /api
         pathType: Prefix
         backend:
           service:
-            name: python-service
+            name: server-python
             port:
               number: 8080
-      - path: /api/node
+      - path: /api2
         pathType: Prefix
         backend:
           service:
-            name: node-service
+            name: server-node
             port:
-              number: 5000 
+              number: 5000

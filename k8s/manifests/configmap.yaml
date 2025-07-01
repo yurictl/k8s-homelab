@@ -14,5 +14,5 @@ data:
   NODE_PORT: "5000"
   
   # Service URLs (for internal communication)
-  PYTHON_SERVICE_URL: "http://python-service:8080"
-  NODE_SERVICE_URL: "http://node-service:5000" 
+  PYTHON_SERVICE_URL: "http://server-python:8080"
+  NODE_SERVICE_URL: "http://server-node:5000" 

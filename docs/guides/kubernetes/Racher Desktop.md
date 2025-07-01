@@ -20,6 +20,7 @@ Use nerdctl
 - Use [nerdctl](https://github.com/containerd/nerdctl), which comes with Rancher Desktop, to build images.
 
 ```bash
-nerdctl -n k8s.io -t server-python:latest  services/server-python
-nerdctl build -n k8s.io -t server-node:latest ./services/server-node
-nerdctl build -n k8s.io -t homelab-frontend:latest ./services/homelab-frontend
+nerdctl build --namespace k8s.io -t server-python:latest  services/server-python
+nerdctl build --namespace k8s.io -t server-node:latest ./services/server-node
+nerdctl build --namespace k8s.io -t homelab-frontend:latest ./services/homelab-frontend
+```

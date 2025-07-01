@@ -45,3 +45,11 @@
 
 - Create maximally complex services and infrastructure. Then add monitoring and observability. This will make it interesting to migrate everything to a new platform. By "interesting" I mean that many things will break and we'll need to figure out and fix them.
 
+### 2025-07-01
+
+- Successfully used nerdctl to build images for Rancher and ran them locally.
+- Figured out how Vite uses environment variables and made sure values don't get "baked in".
+
+#### Ideas
+
+- Structure the approach to API endpoints so that backends in different languages can be added.

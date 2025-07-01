@@ -21,8 +21,8 @@ const MetricsDashboard = () => {
       
       // Fetch metrics from both services (commented out for now since we're using mock data)
       // const [pythonMetrics, nodeMetrics] = await Promise.all([
-      //   axios.get('http://python-service:8080/api/metrics').catch(() => null),
-      //   axios.get('http://node-service:5000/healthdetailed').catch(() => null)
+      //   axios.get('http://server-python:8080/api/metrics').catch(() => null),
+      //   axios.get('http://server-node:5000/healthdetailed').catch(() => null)
       // ])
 
       // Generate mock time series data for demonstration

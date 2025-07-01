@@ -35,6 +35,12 @@
 | **Octant** | Web-based dashboard for inspecting Kubernetes resources visually | To explore |
 | **Orbstack** | Lightweight alternative to Docker Desktop with Kubernetes support | To explore |
 
+## Virtualization & Infrastructure
+
+| Tool | Description | Status |
+|------|-------------|--------|
+| **Proxmox** | Open-source virtualization platform for local infrastructure; supports VMs and containers with web-based management | To explore |
+
 ## Machine Learning & MLOps
 
 | Tool | Description | Status |

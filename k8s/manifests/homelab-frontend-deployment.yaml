@@ -27,9 +27,9 @@ spec:
         - name: NODE_ENV
           value: "production"
         - name: VITE_PYTHON_SERVICE_URL
-          value: "http://python-service:8080"
+          value: "http://homelab.127.0.0.1.sslip.io/"
         - name: VITE_NODE_SERVICE_URL
-          value: "http://node-service:5000"
+          value: "http://homelab.127.0.0.1.sslip.io/api2"
         - name: VITE_API_TIMEOUT
           value: "10000"
         - name: VITE_DEV_MODE

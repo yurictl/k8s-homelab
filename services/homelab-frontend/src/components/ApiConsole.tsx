@@ -16,6 +16,19 @@ interface ApiResponse {
   duration: number
 }
 
+// @ts-ignore
+// eslint-disable-next-line
+declare global {
+  interface Window {
+    ENV?: {
+      VITE_PYTHON_SERVICE_URL?: string;
+      VITE_NODE_SERVICE_URL?: string;
+      VITE_API_TIMEOUT?: string;
+      VITE_DEV_MODE?: string;
+    };
+  }
+}
+
 const ApiConsole = () => {
   const [request, setRequest] = useState<ApiRequest>({
     method: 'GET',
@@ -27,8 +40,8 @@ const ApiConsole = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const pythonUrl = import.meta.env.VITE_PYTHON_SERVICE_URL || 'http://localhost:8080'
-  const nodeUrl = import.meta.env.VITE_NODE_SERVICE_URL || 'http://localhost:5000'
+  const pythonUrl = window.ENV?.VITE_PYTHON_SERVICE_URL || 'http://localhost:8080'
+  const nodeUrl = window.ENV?.VITE_NODE_SERVICE_URL || 'http://localhost:5000'
 
   const predefinedRequests = [
     {

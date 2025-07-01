@@ -16,6 +16,8 @@ window.ENV = {
 };
 EOF
 
+cp /tmp/env.js /usr/share/nginx/html/env.js
+
 # Replace environment variables in the built files
 find /usr/share/nginx/html -name "*.js" -type f -exec sed -i "s|import.meta.env.VITE_PYTHON_SERVICE_URL|window.ENV.VITE_PYTHON_SERVICE_URL|g" {} \;
 find /usr/share/nginx/html -name "*.js" -type f -exec sed -i "s|import.meta.env.VITE_NODE_SERVICE_URL|window.ENV.VITE_NODE_SERVICE_URL|g" {} \;

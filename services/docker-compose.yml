@@ -10,18 +10,18 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - VITE_PYTHON_SERVICE_URL=http://python-service:8080
-      - VITE_NODE_SERVICE_URL=http://node-service:5000
+      - VITE_PYTHON_SERVICE_URL=http://server-python:8080
+      - VITE_NODE_SERVICE_URL=http://server-node:5000
       - VITE_API_TIMEOUT=10000
       - VITE_DEV_MODE=false
     depends_on:
-      - python-service
-      - node-service
+      - server-python
+      - server-node
     networks:
       - homelab
 
   # Python backend service (for testing)
-  python-service:
+  server-python:
     image: server-python:latest
     build:
       context: ./server-python
@@ -34,7 +34,7 @@ services:
       - homelab
 
   # Node.js backend service (for testing)
-  node-service:
+  server-node:
     image: server-node:latest
     build:
       context: ./server-node

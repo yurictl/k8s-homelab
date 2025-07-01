@@ -26,6 +26,22 @@ spec:
         env:
         - name: PORT
           value: "8080"
+        - name: HOST
+          value: "0.0.0.0"
+        - name: DEBUG
+          value: "false"
+        - name: LOG_LEVEL
+          value: "INFO"
+        - name: APP_NAME
+          value: "Homelab Python Server"
+        - name: APP_VERSION
+          value: "1.0.0"
+        - name: ROOT_PATH
+          value: "/"
+        - name: ENABLE_ENV_ENDPOINT
+          value: "true"
+        - name: REDACT_SENSITIVE_ENV_VARS
+          value: "true"
         resources:
           requests:
             memory: "128Mi"
@@ -49,7 +65,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: python-service
+  name: server-python
   namespace: homelab
   labels:
     app: server-python

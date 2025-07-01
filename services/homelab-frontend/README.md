@@ -37,8 +37,8 @@ docker run -p 3000:3000 homelab-frontend
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `VITE_PYTHON_SERVICE_URL` | Python backend service URL | `http://python-service:8080` |
-| `VITE_NODE_SERVICE_URL` | Node.js backend service URL | `http://node-service:5000` |
+| `VITE_PYTHON_SERVICE_URL` | Python backend service URL | `http://server-python:8080` |
+| `VITE_NODE_SERVICE_URL` | Node.js backend service URL | `http://server-node:5000` |
 | `VITE_API_TIMEOUT` | API request timeout (ms) | `10000` |
 
 ## Testing
