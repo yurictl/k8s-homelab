@@ -2,14 +2,6 @@ import express, { Request, Response } from 'express';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.json({ 
-    message: 'API v2 is running',
-    version: '2.0.0',
-    timestamp: new Date().toISOString()
-  });
-});
-
 router.get('/hello', (req: Request, res: Response) => {
   res.setHeader("AK-Token", "This is a header");
   res.json({ 

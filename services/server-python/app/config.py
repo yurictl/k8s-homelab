@@ -15,7 +15,6 @@ class Settings(BaseSettings):
     # Application settings
     app_name: str = "Homelab Python Server"
     app_version: str = "1.0.0"
-    root_path: str = "/api"
     
     # CORS settings
     cors_origins: list = ["*"]

@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: homelab
+  labels:
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: mlops-practice
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+
+    rule_files:
+      # - "first_rules.yml"
+      # - "second_rules.yml"
+
+    scrape_configs:
+      # Prometheus itself
+      - job_name: 'prometheus'
+        static_configs:
+          - targets: ['localhost:9090']
+
+      # Homelab services (static targets)
+      - job_name: 'homelab-python'
+        static_configs:
+          - targets: ['server-python:8080']
+        metrics_path: /metrics
+        scrape_interval: 10s
+
+      - job_name: 'homelab-node'
+        static_configs:
+          - targets: ['server-node:5000']
+        metrics_path: /metrics
+        scrape_interval: 10s
+
+      - job_name: 'homelab-frontend'
+        static_configs:
+          - targets: ['frontend-service:3000']
+        metrics_path: /metrics
+        scrape_interval: 10s 

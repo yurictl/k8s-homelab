@@ -50,6 +50,7 @@
 - Successfully used nerdctl to build images for Rancher and ran them locally.
 - Figured out how Vite uses environment variables and made sure values don't get "baked in".
 
-#### Ideas
+### 2025-07-09
 
-- Structure the approach to API endpoints so that backends in different languages can be added.
+- For API architecture, decided to use host header instead of path prefix. Because services are maximally independent and I'll compose them as needed. Every service must expose /health, /ready, /metrics - this is clear. Versioning & namespacing not doing yet.
+- Made minimal deployment of Prometheus and Grafana, but need to clean up for kustomize.

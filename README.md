@@ -19,8 +19,7 @@ You don't need clusters of old laptops or Raspberry Pi boards to start your home
 This repository contains various services and applications that can be deployed in a Kubernetes environment:
 
 ### Services
-- **client-react/** - React frontend application
-- **server-multi/** - Multi-service backend
+- **homelab-frontend/** - React frontend application
 - **server-node/** - Node.js backend service
 - **server-python/** - Python backend service
 

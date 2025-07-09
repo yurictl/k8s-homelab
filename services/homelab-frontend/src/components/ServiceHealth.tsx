@@ -34,8 +34,8 @@ const ServiceHealth = () => {
     // Check Python service
     try {
       const pythonUrl = window.ENV?.VITE_PYTHON_SERVICE_URL || 'http://localhost:8080'
-      console.log('Checking Python service at:', `${pythonUrl}/api/health`)
-      const pythonResponse = await axios.get(`${pythonUrl}/api/health`, { timeout: 5000 })
+      console.log('Checking Python service at:', `${pythonUrl}/health`)
+      const pythonResponse = await axios.get(`${pythonUrl}/health`, { timeout: 5000 })
       newStatus[0] = {
         service: 'Python Service',
         status: 'healthy',

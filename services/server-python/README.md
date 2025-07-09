@@ -24,11 +24,12 @@ uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 
 ## Key Endpoints
 
-- `GET /api/` - Server info
-- `GET /api/health` - Health check
-- `GET /api/metrics` - Prometheus-style metrics
-- `GET /api/info` - System information
-- `GET /api/docs` - Interactive API docs
+- `GET /` - Server info
+- `GET /health` - Health check
+- `GET /ready` - Kubernetes readiness probe
+- `GET /metrics` - Prometheus-style metrics
+- `GET /info` - System information
+- `GET /docs` - Interactive API docs
 
 ## Configuration
 
@@ -42,13 +43,12 @@ uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 | `LOG_LEVEL` | `INFO` | Logging verbosity |
 | `APP_NAME` | `Homelab Python Server` | Application name |
 | `APP_VERSION` | `1.0.0` | Application version |
-| `ROOT_PATH` | `/api` | API root path |
-| `ENABLE_ENV_ENDPOINT` | `true` | Enable `/api/env` endpoint |
+| `ENABLE_ENV_ENDPOINT` | `true` | Enable `/env` endpoint |
 | `REDACT_SENSITIVE_ENV_VARS` | `true` | Filter sensitive data |
 
 ### Security Notes
 - Environment variables are filtered by default to prevent sensitive data exposure
-- The `/api/env` endpoint can be disabled for production
+- The `/env` endpoint can be disabled for production
 - Sensitive vars (containing 'key', 'secret', 'password', 'token') are automatically redacted
 
 ## Dependencies

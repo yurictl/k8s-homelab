@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts'
+import axios from 'axios'
 
 interface MetricsData {
   timestamp: string
@@ -9,31 +10,64 @@ interface MetricsData {
   response_time: number
 }
 
+// @ts-ignore
+// eslint-disable-next-line
+declare global {
+  interface Window {
+    ENV?: {
+      VITE_PYTHON_SERVICE_URL?: string;
+      VITE_NODE_SERVICE_URL?: string;
+      VITE_API_TIMEOUT?: string;
+      VITE_DEV_MODE?: string;
+    };
+  }
+}
+
 const MetricsDashboard = () => {
   const [metricsData, setMetricsData] = useState<MetricsData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [pythonMetrics, setPythonMetrics] = useState<any>(null)
+  const [nodeMetrics, setNodeMetrics] = useState<any>(null)
+
+  const pythonUrl = window.ENV?.VITE_PYTHON_SERVICE_URL || 'http://localhost:8080'
+  const nodeUrl = window.ENV?.VITE_NODE_SERVICE_URL || 'http://localhost:5000'
 
   const fetchMetrics = async () => {
     try {
       setLoading(true)
       setError(null)
       
-      // Fetch metrics from both services (commented out for now since we're using mock data)
-      // const [pythonMetrics, nodeMetrics] = await Promise.all([
-      //   axios.get('http://server-python:8080/api/metrics').catch(() => null),
-      //   axios.get('http://server-node:5000/healthdetailed').catch(() => null)
-      // ])
+      // Fetch metrics from both services
+      const [pythonResponse, nodeResponse] = await Promise.all([
+        axios.get(`${pythonUrl}/metrics`).catch(() => null),
+        axios.get(`${pythonUrl}/info`).catch(() => null),
+        axios.get(`${nodeUrl}/health/detailed`).catch(() => null)
+      ])
 
-      // Generate mock time series data for demonstration
+      // Process Python metrics
+      if (pythonResponse) {
+        setPythonMetrics(pythonResponse.data)
+      }
+
+      // Process Node.js metrics
+      if (nodeResponse) {
+        setNodeMetrics(nodeResponse.data)
+      }
+
+      // Generate time series data based on real metrics
       const now = new Date()
-      const mockData: MetricsData[] = Array.from({ length: 20 }, (_, i) => ({
-        timestamp: new Date(now.getTime() - (19 - i) * 60000).toLocaleTimeString(),
-        cpu_usage: Math.random() * 100,
-        memory_usage: Math.random() * 100,
-        request_count: Math.floor(Math.random() * 1000),
-        response_time: Math.random() * 500
-      }))
+      const mockData: MetricsData[] = Array.from({ length: 20 }, (_, i) => {
+        const baseTime = now.getTime() - (19 - i) * 60000
+        
+        return {
+          timestamp: new Date(baseTime).toLocaleTimeString(),
+          cpu_usage: pythonResponse?.data?.server_info?.cpu_percent || Math.random() * 100,
+          memory_usage: pythonResponse?.data?.server_info?.memory_usage_percent || Math.random() * 100,
+          request_count: pythonResponse?.data?.total_requests || Math.floor(Math.random() * 1000),
+          response_time: Math.random() * 500
+        }
+      })
 
       setMetricsData(mockData)
     } catch (err) {
@@ -180,6 +214,89 @@ const MetricsDashboard = () => {
             </div>
             <div className="text-sm text-gray-500">Response Time</div>
           </div>
+        </div>
+      </div>
+
+      {/* Real Service Metrics */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+        {/* Python Service Metrics */}
+        <div className="bg-white border rounded-lg p-4">
+          <h3 className="text-md font-medium text-gray-900 mb-4 flex items-center">
+            <span className="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+            Python Service Metrics
+          </h3>
+          {pythonMetrics ? (
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Uptime</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.uptime_seconds?.toFixed(1)}s</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Total Requests</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.total_requests}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Requests/sec</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.requests_per_second?.toFixed(2)}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">CPU Usage</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.server_info?.cpu_percent?.toFixed(1)}%</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Memory Usage</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.server_info?.memory_usage_percent?.toFixed(1)}%</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">CPU Count</div>
+                  <div className="text-lg font-semibold">{pythonMetrics.server_info?.cpu_count}</div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-sm text-gray-500">No metrics available</div>
+          )}
+        </div>
+
+        {/* Node.js Service Metrics */}
+        <div className="bg-white border rounded-lg p-4">
+          <h3 className="text-md font-medium text-gray-900 mb-4 flex items-center">
+            <span className="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+            Node.js Service Metrics
+          </h3>
+          {nodeMetrics ? (
+            <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Uptime</div>
+                  <div className="text-lg font-semibold">{nodeMetrics.uptime?.toFixed(1)}s</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Status</div>
+                  <div className="text-lg font-semibold text-green-600">{nodeMetrics.status}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">RSS Memory</div>
+                  <div className="text-lg font-semibold">{nodeMetrics.memory?.rss}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Heap Total</div>
+                  <div className="text-lg font-semibold">{nodeMetrics.memory?.heapTotal}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">Heap Used</div>
+                  <div className="text-lg font-semibold">{nodeMetrics.memory?.heapUsed}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500">External Memory</div>
+                  <div className="text-lg font-semibold">{nodeMetrics.memory?.external}</div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="text-sm text-gray-500">No metrics available</div>
+          )}
         </div>
       </div>
     </div>

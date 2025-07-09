@@ -11,13 +11,26 @@ router.get('/', (req, res) => {
     timestamp: new Date().toISOString(),
     endpoints: {
       health: '/health',
-      api: '/api'
+      ready: '/ready',
+      hello: '/hello',
+      env: '/env',
+      goodbye: '/goodbye'
     }
   });
 });
 
 // Mount route modules
 router.use('/health', healthRoutes);
-router.use('/api', apiRoutes);
+router.use('/ready', (req, res) => {
+  res.json({ 
+    status: 'ready',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
+// Mount API routes at root level (without /api prefix)
+router.use('/', apiRoutes);
 
 export default router; 

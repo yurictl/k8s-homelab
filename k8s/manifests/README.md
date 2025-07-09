@@ -9,6 +9,10 @@ This directory contains Kubernetes manifests for deploying the homelab services.
 - `server-python-deployment.yaml` - Python backend service deployment and service
 - `server-node-deployment.yaml` - Node.js backend service deployment and service  
 - `homelab-frontend-deployment.yaml` - Frontend application deployment and service
+- `prometheus-configmap.yaml` - Prometheus configuration
+- `prometheus-deployment.yaml` - Prometheus deployment and service
+- `grafana-configmap.yaml` - Grafana configuration
+- `grafana-deployment.yaml` - Grafana deployment and service
 - `ingress.yaml` - Ingress configuration for external access
 - `kustomization.yaml` - Kustomize configuration for managing all resources
 
@@ -42,10 +46,15 @@ kubectl apply -k k8s/manifests/
 - Frontend: `http://homelab.local` (update host in ingress.yaml)
 - Python API: `http://homelab.local/api/python`
 - Node API: `http://homelab.local/api/node`
+- Grafana: `http://grafana.homelab.127.0.0.1.sslip.io` (admin/admin)
+- Prometheus: `http://prometheus.homelab.127.0.0.1.sslip.io`
 
 ## Notes
 
 - Images use `imagePullPolicy: Never` for local development
 - Health checks are configured for all services
 - Resource limits and requests are set for all containers
-- Services run with 2 replicas each for high availability 
+- Services run with 2 replicas each for high availability
+- Prometheus and Grafana are configured for monitoring homelab services
+- Prometheus is configured with static targets for homelab services
+- Default Grafana credentials: admin/admin 

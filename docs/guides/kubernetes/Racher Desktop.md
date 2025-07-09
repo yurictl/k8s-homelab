@@ -24,3 +24,10 @@ nerdctl build --namespace k8s.io -t server-python:latest  services/server-python
 nerdctl build --namespace k8s.io -t server-node:latest ./services/server-node
 nerdctl build --namespace k8s.io -t homelab-frontend:latest ./services/homelab-frontend
 ```
+
+- Deploy
+
+```bash
+cd k8s/manifests/
+kubectl apply -k .
+```

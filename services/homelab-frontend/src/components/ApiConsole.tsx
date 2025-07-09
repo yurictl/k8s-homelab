@@ -47,20 +47,32 @@ const ApiConsole = () => {
     {
       name: 'Python Health Check',
       method: 'GET',
-      url: `${pythonUrl}/api/health`,
+      url: `${pythonUrl}/health`,
       description: 'Check Python service health'
     },
     {
       name: 'Python Metrics',
       method: 'GET',
-      url: `${pythonUrl}/api/metrics`,
+      url: `${pythonUrl}/metrics`,
       description: 'Get Python service metrics'
     },
     {
       name: 'Python Environment',
       method: 'GET',
-      url: `${pythonUrl}/api/env`,
+      url: `${pythonUrl}/env`,
       description: 'Get Python service environment variables'
+    },
+    {
+      name: 'Python Info',
+      method: 'GET',
+      url: `${pythonUrl}/info`,
+      description: 'Get Python service system information'
+    },
+    {
+      name: 'Python Ready',
+      method: 'GET',
+      url: `${pythonUrl}/ready`,
+      description: 'Check Python service readiness'
     },
     {
       name: 'Node.js Health Check',
@@ -71,14 +83,26 @@ const ApiConsole = () => {
     {
       name: 'Node.js Detailed Health',
       method: 'GET',
-      url: `${nodeUrl}/healthdetailed`,
+      url: `${nodeUrl}/health/detailed`,
       description: 'Get detailed Node.js service health'
     },
     {
       name: 'Node.js Environment',
       method: 'GET',
-      url: `${nodeUrl}/apienv`,
+      url: `${nodeUrl}/env`,
       description: 'Get Node.js service environment variables'
+    },
+    {
+      name: 'Node.js Ready',
+      method: 'GET',
+      url: `${nodeUrl}/ready`,
+      description: 'Check Node.js service readiness'
+    },
+    {
+      name: 'Node.js Hello',
+      method: 'GET',
+      url: `${nodeUrl}/hello`,
+      description: 'Get hello message from Node.js service'
     }
   ]
 

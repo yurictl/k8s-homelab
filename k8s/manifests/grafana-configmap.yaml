@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  namespace: homelab
+  labels:
+    app.kubernetes.io/name: grafana
+    app.kubernetes.io/part-of: mlops-practice
+data:
+  grafana.ini: |
+    [server]
+    http_port = 3000
+    domain = homelab.local
+    
+    [security]
+    admin_user = admin
+    admin_password = admin
+    
+    [auth.anonymous]
+    enabled = true
+    org_name = Main Org.
+    org_role = Viewer
+    
+    [datasources]
+    default = prometheus
+    
+    [log]
+    mode = console
+    level = info 

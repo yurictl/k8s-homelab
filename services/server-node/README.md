@@ -25,16 +25,19 @@ docker run -d -p 5000:5000 --name server-node server-node
 
 - **TypeScript** - Type safety and modern JS features
 - **Health Monitoring** - `/health` and `/health/detailed` endpoints
+- **Readiness Check** - `/ready` endpoint for Kubernetes readiness probes
 - **Docker Ready** - Multi-stage build with security practices
 - **Modular Routes** - Organized API structure
 
 ## API Endpoints
 
+- `GET /` - Service status and available endpoints
 - `GET /health` - Basic health check
 - `GET /health/detailed` - Memory usage and detailed status
-- `GET /api` - API status and version
-- `GET /api/hello` - Hello endpoint
-- `GET /api/env` - Filtered environment variables
+- `GET /ready` - Readiness check for Kubernetes
+- `GET /hello` - Hello endpoint with custom header
+- `GET /env` - Filtered environment variables
+- `GET /goodbye` - Goodbye endpoint
 
 ## Environment Setup
 

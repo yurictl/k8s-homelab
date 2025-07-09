@@ -32,94 +32,115 @@ const ApiEndpoints = () => {
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/',
-      description: 'Root API endpoint - returns basic service information',
-      example: `${pythonUrl}/api/`
+      path: '/',
+      description: 'Server info and version',
+      example: `${pythonUrl}/`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/items/{item_id}',
-      description: 'Get item by ID - returns item details for the specified ID',
-      example: `${pythonUrl}/api/items/123`
+      path: '/health',
+      description: 'Health check endpoint',
+      example: `${pythonUrl}/health`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/health',
-      description: 'Health check endpoint - returns service health status',
-      example: `${pythonUrl}/api/health`
+      path: '/ready',
+      description: 'Kubernetes readiness probe',
+      example: `${pythonUrl}/ready`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/actuator/health',
-      description: 'Actuator health endpoint - detailed health information',
-      example: `${pythonUrl}/api/actuator/health`
+      path: '/metrics',
+      description: 'Prometheus-style metrics',
+      example: `${pythonUrl}/metrics`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/metrics',
-      description: 'Prometheus metrics endpoint - system and application metrics',
-      example: `${pythonUrl}/api/metrics`
+      path: '/info',
+      description: 'System information and resource usage',
+      example: `${pythonUrl}/info`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/info',
-      description: 'Service information endpoint - metadata about the service',
-      example: `${pythonUrl}/api/info`
+      path: '/env',
+      description: 'Environment variables (filtered)',
+      example: `${pythonUrl}/env`
     },
     {
       service: 'Python Service',
       method: 'GET',
-      path: '/api/env',
-      description: 'Environment variables endpoint - filtered environment data',
-      example: `${pythonUrl}/api/env`
+      path: '/actuator/health',
+      description: 'Spring Boot style health check',
+      example: `${pythonUrl}/actuator/health`
+    },
+    {
+      service: 'Python Service',
+      method: 'GET',
+      path: '/items/{item_id}',
+      description: 'Data endpoint with optional query parameter',
+      example: `${pythonUrl}/items/123`
+    },
+    {
+      service: 'Python Service',
+      method: 'GET',
+      path: '/docs',
+      description: 'Interactive API documentation',
+      example: `${pythonUrl}/docs`
     },
     // Node.js service endpoints
     {
       service: 'Node.js Service',
       method: 'GET',
+      path: '/',
+      description: 'Service status and available endpoints',
+      example: `${nodeUrl}/`
+    },
+    {
+      service: 'Node.js Service',
+      method: 'GET',
       path: '/health',
-      description: 'Basic health check endpoint',
+      description: 'Basic health check',
       example: `${nodeUrl}/health`
     },
     {
       service: 'Node.js Service',
       method: 'GET',
-      path: '/healthdetailed',
-      description: 'Detailed health check with more information',
-      example: `${nodeUrl}/healthdetailed`
+      path: '/health/detailed',
+      description: 'Memory usage and detailed status',
+      example: `${nodeUrl}/health/detailed`
     },
     {
       service: 'Node.js Service',
       method: 'GET',
-      path: '/api',
-      description: 'Main API endpoint - returns service information',
-      example: `${nodeUrl}/api`
+      path: '/ready',
+      description: 'Readiness check for Kubernetes',
+      example: `${nodeUrl}/ready`
     },
     {
       service: 'Node.js Service',
       method: 'GET',
-      path: '/apihello',
-      description: 'Hello endpoint - returns greeting message',
-      example: `${nodeUrl}/apihello`
+      path: '/hello',
+      description: 'Hello endpoint with custom header',
+      example: `${nodeUrl}/hello`
     },
     {
       service: 'Node.js Service',
       method: 'GET',
-      path: '/apienv',
-      description: 'Environment variables endpoint',
-      example: `${nodeUrl}/apienv`
+      path: '/env',
+      description: 'Filtered environment variables',
+      example: `${nodeUrl}/env`
     },
     {
       service: 'Node.js Service',
       method: 'GET',
-      path: '/apigoodbye',
-      description: 'Goodbye endpoint - returns farewell message',
-      example: `${nodeUrl}/apigoodbye`
+      path: '/goodbye',
+      description: 'Goodbye endpoint',
+      example: `${nodeUrl}/goodbye`
     }
   ]
 

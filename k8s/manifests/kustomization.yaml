@@ -9,6 +9,11 @@ resources:
 - server-python-deployment.yaml
 - server-node-deployment.yaml
 - homelab-frontend-deployment.yaml
+- prometheus-rbac.yaml
+- prometheus-configmap.yaml
+- prometheus-deployment.yaml
+- grafana-configmap.yaml
+- grafana-deployment.yaml
 - ingress.yaml
 
 commonLabels:

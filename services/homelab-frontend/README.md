@@ -24,14 +24,26 @@ docker run -p 3000:3000 homelab-frontend
 ## API Endpoints
 
 ### Python Service (port 8080)
-- `/api/health` - Health check
-- `/api/metrics` - Prometheus metrics
-- `/api/items/{id}` - Data endpoint
+- `GET /` - Server info and version
+- `GET /health` - Health check
+- `GET /ready` - Kubernetes readiness probe
+- `GET /metrics` - Prometheus-style metrics
+- `GET /info` - System information and resource usage
+- `GET /env` - Environment variables (filtered)
+- `GET /actuator/health` - Spring Boot style health check
+- `GET /items/{item_id}` - Data endpoint with optional query parameter
+- `GET /docs` - Interactive API documentation
 
 ### Node.js Service (port 5000)
-- `/health` - Health check
-- `/api` - Main endpoint
-- `/apienv` - Environment info
+- `GET /` - Service status and available endpoints
+- `GET /health` - Basic health check
+- `GET /health/detailed` - Memory usage and detailed status
+- `GET /ready` - Readiness check for Kubernetes
+- `GET /hello` - Hello endpoint with custom header
+- `GET /env` - Filtered environment variables
+- `GET /goodbye` - Goodbye endpoint
+- `GET /api2/health` - Legacy health endpoint
+- `GET /api2/` - Legacy root endpoint
 
 ## Configuration
 

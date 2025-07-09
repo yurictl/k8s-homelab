@@ -15,14 +15,10 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-ROOT_PATH = "/api"
-
 app = FastAPI(
     title="Homelab Python Server",
     description="A FastAPI server for homelab experiments and testing",
-    version="1.0.0",
-    root_path=ROOT_PATH,
-    openapi_url=f"{ROOT_PATH}/openapi.json"
+    version="1.0.0"
 )
 
 # Add CORS middleware for homelab development
@@ -61,6 +57,16 @@ def read_root():
         "message": "Hello from Homelab Python Server!",
         "timestamp": datetime.now().isoformat(),
         "version": "1.0.0"
+    }
+
+@app.get("/ready")
+def ready_check():
+    """Kubernetes readiness probe endpoint"""
+    uptime = time.time() - start_time
+    return {
+        "status": "ready",
+        "uptime_seconds": round(uptime, 2),
+        "timestamp": datetime.now().isoformat()
     }
 
 @app.get("/items/{item_id}")

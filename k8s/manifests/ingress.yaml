@@ -20,17 +20,43 @@ spec:
             name: frontend-service
             port:
               number: 3000
-      - path: /api
+  - host: server-python.homelab.127.0.0.1.sslip.io
+    http:
+      paths:
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: server-python
             port:
               number: 8080
-      - path: /api2
+  - host: server-node.homelab.127.0.0.1.sslip.io
+    http:
+      paths:
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: server-node
             port:
               number: 5000
+  - host: grafana.homelab.127.0.0.1.sslip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+  - host: prometheus.homelab.127.0.0.1.sslip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
